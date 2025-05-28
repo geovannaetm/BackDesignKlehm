@@ -1,0 +1,35 @@
+{
+  "name": "backtatto",
+  "version": "1.0.0",
+  "main": "src/serve.js",
+  "scripts": {
+    "start": "node src/Server.js",
+    "dev": "nodemon src/Server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Tatto",
+    "Desenvolvimento WEB",
+    "Node.js",
+    "Express",
+    "Dev BackEnd"
+  ],
+  "author": "Geovanna Emilly Timoteo Martins",
+  "license": "MTI",
+  "description": "Sistema de exemplo Para curso de Técinico do IFSP, aplicando API",
+  "devDependencies": {
+    "@eslint/js": "^9.26.0",
+    "eslint": "^9.26.0",
+    "globals": "^16.0.0",
+    "nodemon": "^3.1.10",
+    "sequelize-cli": "^6.6.3",
+    "sucrase": "^3.35.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.1",
+    "sequelize": "^6.37.7"
+  }
+}
