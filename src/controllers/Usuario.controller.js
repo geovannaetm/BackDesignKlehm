@@ -74,6 +74,34 @@ class UsuarioController {
         }
     }
 
+
+    async login(req, res) {
+        const { email, senha } = req.body;
+    
+        try {
+         
+          const usuario = await Usuario.findOne({ where: { email } });
+          if (!usuario) {
+            return res.status(404).json({ error: 'Usuário não encontrado' });
+          }
+    
+          
+          if (usuario.senha !== senha) {
+            return res.status(401).json({ error: 'Senha incorreta' });
+          }
+    
+         
+          return res.status(200).json({
+            id: usuario.id,
+            nome: usuario.nome,
+            email: usuario.email,
+          });
+        } catch (error) {
+          console.error(error);
+          return res.status(500).json({ error: 'Erro ao realizar login' });
+        }
+      }
+
 }
 
 
