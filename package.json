@@ -1,5 +1,6 @@
 {
-  "name": "backtatto",
+  "type": "module",
+  "name": "backend-design-klehm",
   "version": "1.0.0",
   "main": "src/serve.js",
   "scripts": {
@@ -8,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "Tatto",
+    "Joias",
     "Desenvolvimento WEB",
     "Node.js",
     "Express",

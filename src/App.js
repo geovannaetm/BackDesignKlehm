@@ -4,6 +4,8 @@ import cors from 'cors';
 import './database/ModelConnection.js';
 import homeRoutes from './routers/Home.Routes.js';
 import usuarioRouters from './routers/Usuario.routers.js';
+import produtoRoutes from './routers/Produto.Routes.js';
+
 
 dotenv.config();
 
@@ -23,6 +25,7 @@ class App {
     routes() {
         this.app.use('/', homeRoutes);
         this.app.use('/usuario', usuarioRouters);
+        this.app.use('/produtos', produtoRoutes);
     }
 }
 
