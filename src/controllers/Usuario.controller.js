@@ -77,39 +77,36 @@ class UsuarioController {
     }
 
 
-    async login(req, res) {
-        const { email, senha } = req.body;
+   async login(req, res) {
+  const { email, senha } = req.body;
 
-        try {
-            const usuario = await Usuario.findOne({ where: { email } });
-            if (!usuario) {
-                return res.status(404).json({ error: 'Usuário não encontrado' });
-            }
-
-            // Verifica a senha (considerando que está em texto plano neste exemplo)
-            // Na prática, você deve usar bcrypt para comparar senhas hash
-            if (usuario.senha !== senha) {
-                return res.status(401).json({ error: 'Credenciais inválidas' });
-            }
-
-            // Cria o token JWT
-            const token = jwt.sign(
-                {
-                    id: usuario.id,
-                    nome: usuario.nome,
-                    email: usuario.email,
-                },
-                process.env.JWT_SECRET, // Chave secreta armazenada em variáveis de ambiente
-                { expiresIn: process.env.JWT_EXPIRES_IN || '1h' } // Tempo de expiração
-            );
-
-            // Retorna o token e informações básicas do usuário
-            return res.status(200).json({ token });
-        } catch (error) {
-            console.error(error);
-            return res.status(500).json({ error: 'Erro ao realizar login' });
-        }
+  try {
+    const usuario = await Usuario.findOne({ where: { email } });
+    if (!usuario) {
+      return res.status(404).json({ error: 'Usuário não encontrado' });
     }
+
+    if (usuario.senha !== senha) {
+      return res.status(401).json({ error: 'Usuário ou senha inválida' });
+    }
+
+    const token = jwt.sign(
+      {
+        id: usuario.id,
+        nome: usuario.nome,
+        email: usuario.email,
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: process.env.JWT_EXPIRES_IN || '1h' }
+    );
+
+    return res.status(200).json({ token, nome: usuario.nome, email: usuario.email });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Erro ao realizar login' });
+  }
+}
+
 
 }
 
