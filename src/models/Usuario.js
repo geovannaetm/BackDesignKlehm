@@ -11,8 +11,14 @@ export default class Usuario extends Model {
             tableName: 'usuario',
             timestamps: false,
         }
-    )
+        )
         return this;
     }
 
+    static associate(models) {
+        this.hasMany(models.Carrinho, {
+            foreignKey: 'usuario_id',
+            as: 'carrinho'
+        });
+    }
 }
