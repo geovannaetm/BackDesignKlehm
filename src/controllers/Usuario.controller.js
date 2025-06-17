@@ -77,7 +77,7 @@ class UsuarioController {
     }
 
 
-   async login(req, res) {
+  async login(req, res) {
   const { email, senha } = req.body;
 
   try {
@@ -92,7 +92,7 @@ class UsuarioController {
 
     const token = jwt.sign(
       {
-        id: usuario.id,
+        id: usuario.id,     // importante
         nome: usuario.nome,
         email: usuario.email,
       },
@@ -100,12 +100,14 @@ class UsuarioController {
       { expiresIn: process.env.JWT_EXPIRES_IN || '1h' }
     );
 
-    return res.status(200).json({ token, nome: usuario.nome, email: usuario.email });
+    // retornando o token e dados, incluindo id se quiser (pode ajudar no front)
+    return res.status(200).json({ token, nome: usuario.nome, email: usuario.email, id: usuario.id });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: 'Erro ao realizar login' });
   }
 }
+
 
 
 }
