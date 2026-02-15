@@ -1,12 +1,11 @@
-# Site Empresa Tatuagem - Backend
+# Site Ecommerce de joias - Backend
 
 # Desenvolvimento em Node.js com JavaScript
 
-## Projeto desenvolvimento para Aula Disciplina CARBEK1
+## Projeto desenvolvimento para fins acadêmicos
 Curso : Técnico de Informaática para Internet
 Instituição : IFSP - Instituto Federal de São Paulo
 Campus: Caraguatatuba
-Professor: **Denny Paulista Azevedo Filho**
 
 
 #### Tecnologia ultilizadas
